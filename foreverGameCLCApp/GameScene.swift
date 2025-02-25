@@ -10,9 +10,14 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    let cam = SKCameraNode()
+    
+    var player: SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        self.camera = cam
         
+        player = self.childNode(withName: "player") as! SKSpriteNode
     }
     
     
@@ -47,6 +52,6 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        cam.position = player.position
     }
 }

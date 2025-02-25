@@ -8,11 +8,13 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let cam = SKCameraNode()
     
     var player: SKSpriteNode!
+    
+    var inAir = false
     
     override func didMove(to view: SKView) {
         self.camera = cam
@@ -20,9 +22,20 @@ class GameScene: SKScene {
         player = self.childNode(withName: "player") as! SKSpriteNode
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        let nodeA = contact.bodyA.node!
+        let nodeB = contact.bodyB.node!
+        
+        if nodeA.name == "ground" || nodeB.name == "ground" {
+            inAir = false
+        }
+    }
+    
     
     func touchDown(atPoint pos : CGPoint) {
-        
+        if !inAir {
+            player.physicsBody?.velocity.dy = 1000
+        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {

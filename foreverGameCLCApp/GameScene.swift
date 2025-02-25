@@ -16,6 +16,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var inAir = false
     
+    var goingLeft = false
+    
     override func didMove(to view: SKView) {
         self.camera = cam
         
@@ -35,6 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func touchDown(atPoint pos : CGPoint) {
         if !inAir {
             player.physicsBody?.velocity.dy = 1000
+            inAir = true
+        } else {
+            player.position.x += (500 * (goingLeft ? -1 : 1))
         }
     }
     

@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		238BBF422D6E062300CA4D61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 238BBF202D6E062100CA4D61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 238BBF272D6E062100CA4D61;
+			remoteInfo = foreverGameCLCApp;
+		};
+		238BBF4C2D6E062300CA4D61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 238BBF202D6E062100CA4D61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 238BBF272D6E062100CA4D61;
+			remoteInfo = foreverGameCLCApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		238BBF282D6E062100CA4D61 /* foreverGameCLCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foreverGameCLCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		238BBF412D6E062300CA4D61 /* foreverGameCLCAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foreverGameCLCAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		238BBF4B2D6E062300CA4D61 /* foreverGameCLCAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foreverGameCLCAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		238BBF2A2D6E062100CA4D61 /* foreverGameCLCApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = foreverGameCLCApp;
+			sourceTree = "<group>";
+		};
+		238BBF442D6E062300CA4D61 /* foreverGameCLCAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = foreverGameCLCAppTests;
+			sourceTree = "<group>";
+		};
+		238BBF4E2D6E062300CA4D61 /* foreverGameCLCAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = foreverGameCLCAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		238BBF252D6E062100CA4D61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		238BBF3E2D6E062300CA4D61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		238BBF482D6E062300CA4D61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		238BBF1F2D6E062100CA4D61 = {
+			isa = PBXGroup;
+			children = (
+				238BBF2A2D6E062100CA4D61 /* foreverGameCLCApp */,
+				238BBF442D6E062300CA4D61 /* foreverGameCLCAppTests */,
+				238BBF4E2D6E062300CA4D61 /* foreverGameCLCAppUITests */,
+				238BBF292D6E062100CA4D61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		238BBF292D6E062100CA4D61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				238BBF282D6E062100CA4D61 /* foreverGameCLCApp.app */,
+				238BBF412D6E062300CA4D61 /* foreverGameCLCAppTests.xctest */,
+				238BBF4B2D6E062300CA4D61 /* foreverGameCLCAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		238BBF272D6E062100CA4D61 /* foreverGameCLCApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 238BBF552D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCApp" */;
+			buildPhases = (
+				238BBF242D6E062100CA4D61 /* Sources */,
+				238BBF252D6E062100CA4D61 /* Frameworks */,
+				238BBF262D6E062100CA4D61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				238BBF2A2D6E062100CA4D61 /* foreverGameCLCApp */,
+			);
+			name = foreverGameCLCApp;
+			packageProductDependencies = (
+			);
+			productName = foreverGameCLCApp;
+			productReference = 238BBF282D6E062100CA4D61 /* foreverGameCLCApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		238BBF402D6E062300CA4D61 /* foreverGameCLCAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 238BBF582D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppTests" */;
+			buildPhases = (
+				238BBF3D2D6E062300CA4D61 /* Sources */,
+				238BBF3E2D6E062300CA4D61 /* Frameworks */,
+				238BBF3F2D6E062300CA4D61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				238BBF432D6E062300CA4D61 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				238BBF442D6E062300CA4D61 /* foreverGameCLCAppTests */,
+			);
+			name = foreverGameCLCAppTests;
+			packageProductDependencies = (
+			);
+			productName = foreverGameCLCAppTests;
+			productReference = 238BBF412D6E062300CA4D61 /* foreverGameCLCAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		238BBF4A2D6E062300CA4D61 /* foreverGameCLCAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 238BBF5B2D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppUITests" */;
+			buildPhases = (
+				238BBF472D6E062300CA4D61 /* Sources */,
+				238BBF482D6E062300CA4D61 /* Frameworks */,
+				238BBF492D6E062300CA4D61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				238BBF4D2D6E062300CA4D61 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				238BBF4E2D6E062300CA4D61 /* foreverGameCLCAppUITests */,
+			);
+			name = foreverGameCLCAppUITests;
+			packageProductDependencies = (
+			);
+			productName = foreverGameCLCAppUITests;
+			productReference = 238BBF4B2D6E062300CA4D61 /* foreverGameCLCAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		238BBF202D6E062100CA4D61 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					238BBF272D6E062100CA4D61 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					238BBF402D6E062300CA4D61 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 238BBF272D6E062100CA4D61;
+					};
+					238BBF4A2D6E062300CA4D61 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 238BBF272D6E062100CA4D61;
+					};
+				};
+			};
+			buildConfigurationList = 238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "foreverGameCLCApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 238BBF1F2D6E062100CA4D61;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 238BBF292D6E062100CA4D61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				238BBF272D6E062100CA4D61 /* foreverGameCLCApp */,
+				238BBF402D6E062300CA4D61 /* foreverGameCLCAppTests */,
+				238BBF4A2D6E062300CA4D61 /* foreverGameCLCAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		238BBF262D6E062100CA4D61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		238BBF3F2D6E062300CA4D61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		238BBF492D6E062300CA4D61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		238BBF242D6E062100CA4D61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		238BBF3D2D6E062300CA4D61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		238BBF472D6E062300CA4D61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		238BBF432D6E062300CA4D61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 238BBF272D6E062100CA4D61 /* foreverGameCLCApp */;
+			targetProxy = 238BBF422D6E062300CA4D61 /* PBXContainerItemProxy */;
+		};
+		238BBF4D2D6E062300CA4D61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 238BBF272D6E062100CA4D61 /* foreverGameCLCApp */;
+			targetProxy = 238BBF4C2D6E062300CA4D61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		238BBF532D6E062300CA4D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		238BBF542D6E062300CA4D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		238BBF562D6E062300CA4D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXK43H2N93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.foreverGameCLCApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		238BBF572D6E062300CA4D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXK43H2N93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.foreverGameCLCApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		238BBF592D6E062300CA4D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXK43H2N93;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.foreverGameCLCAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/foreverGameCLCApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/foreverGameCLCApp";
+			};
+			name = Debug;
+		};
+		238BBF5A2D6E062300CA4D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXK43H2N93;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.foreverGameCLCAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/foreverGameCLCApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/foreverGameCLCApp";
+			};
+			name = Release;
+		};
+		238BBF5C2D6E062300CA4D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXK43H2N93;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.foreverGameCLCAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = foreverGameCLCApp;
+			};
+			name = Debug;
+		};
+		238BBF5D2D6E062300CA4D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXK43H2N93;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.foreverGameCLCAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = foreverGameCLCApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "foreverGameCLCApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				238BBF532D6E062300CA4D61 /* Debug */,
+				238BBF542D6E062300CA4D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		238BBF552D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				238BBF562D6E062300CA4D61 /* Debug */,
+				238BBF572D6E062300CA4D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		238BBF582D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				238BBF592D6E062300CA4D61 /* Debug */,
+				238BBF5A2D6E062300CA4D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		238BBF5B2D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				238BBF5C2D6E062300CA4D61 /* Debug */,
+				238BBF5D2D6E062300CA4D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 238BBF202D6E062100CA4D61 /* Project object */;
+}

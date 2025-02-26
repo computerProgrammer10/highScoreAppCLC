@@ -18,6 +18,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var goingLeft = false
     
+    var dashing = false
+    
+    var runSpeed = 500
+    
     override func didMove(to view: SKView) {
         self.camera = cam
         
@@ -25,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        physicsWorld.contactDelegate = self
+        print("WEEEE")
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         
@@ -39,7 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.physicsBody?.velocity.dy = 1000
             inAir = true
         } else {
-            player.position.x += (500 * (goingLeft ? -1 : 1))
+            player.physicsBody?.velocity.dx = (2000 * (goingLeft ? -1 : 1))
+            dashing = true
         }
     }
     
@@ -71,5 +78,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         cam.position = player.position
+        
+        if dashing {
+            player.physicsBody?.velocity.dx -= 100 * (goingLeft ? -1 : 1)
+            
+            player.physicsBody?.velocity.dx *= ((player.physicsBody?.velocity.dx)! < 0.0 ? -1 : 1)
+            
+            if (player.physicsBody?.velocity.dx)! < CGFloat(runSpeed) {
+                dashing = false
+                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+            }
+        }
     }
 }

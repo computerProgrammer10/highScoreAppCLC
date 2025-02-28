@@ -20,6 +20,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var dashing = false
     
+    var onWall = false
+    
     var dashAvailable = true
     
     var runSpeed = 500
@@ -36,15 +38,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         
-        if nodeA.name == "ground" || nodeB.name == "ground" {
+        if (nodeA.name == "ground" || nodeB.name == "ground") && (nodeA.name == "player" || nodeB.name == "player") {
             
 //            detect if the y of the "collision direction" vector is larger than the x
 //            if so, it collided on top / bottom
             
 //            if not, it collided to the left / right
             if abs(contact.contactNormal.dy) > abs(contact.contactNormal.dx) {
-                
+                onWall = true
             }
+            
             inAir = false
             dashAvailable = true
         }
@@ -94,11 +97,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if dashing {
             player.physicsBody?.velocity.dx -= 100 * (goingLeft ? -1 : 1)
             
-            player.physicsBody?.velocity.dx *= ((player.physicsBody?.velocity.dx)! < 0.0 ? -1 : 1)
-            
-            if (player.physicsBody?.velocity.dx)! < CGFloat(runSpeed) {
+            if (abs(player.physicsBody?.velocity.dx as! CGFloat)) < CGFloat(runSpeed) {
                 dashing = false
-                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
         } else {
             

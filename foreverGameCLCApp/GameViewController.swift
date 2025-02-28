@@ -11,6 +11,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    var play: SKScene!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +22,7 @@ class GameViewController: UIViewController {
             
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
+                play = scene
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 

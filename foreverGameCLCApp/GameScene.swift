@@ -56,6 +56,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             inAir = false
             dashAvailable = true
         }
+        
+        if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
+            
+        }
     }
     
     

@@ -20,22 +20,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var dashing = false
     
+    var dashAvailable = true
+    
     var runSpeed = 500
     
     override func didMove(to view: SKView) {
         self.camera = cam
+        physicsWorld.contactDelegate = self
         
         player = self.childNode(withName: "player") as! SKSpriteNode
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        physicsWorld.contactDelegate = self
         print("WEEEE")
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         
         if nodeA.name == "ground" || nodeB.name == "ground" {
+            
+//            if abs(contact.contactNormal.dy) > abs(contact.contactNormal.dx) {
+//                
+//            }
             inAir = false
+            dashAvailable = true
         }
     }
     
@@ -44,9 +51,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !inAir {
             player.physicsBody?.velocity.dy = 1000
             inAir = true
-        } else {
-            player.physicsBody?.velocity.dx = (2000 * (goingLeft ? -1 : 1))
+        } else if dashAvailable {
+            player.physicsBody?.velocity.dx = (3000 * (goingLeft ? -1 : 1))
             dashing = true
+            dashAvailable = false
         }
     }
     
@@ -88,6 +96,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 dashing = false
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
+        } else {
+            
         }
     }
 }

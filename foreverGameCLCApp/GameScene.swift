@@ -38,9 +38,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if nodeA.name == "ground" || nodeB.name == "ground" {
             
-//            if abs(contact.contactNormal.dy) > abs(contact.contactNormal.dx) {
-//                
-//            }
+//            detect if the y of the "collision direction" vector is larger than the x
+//            if so, it collided on top / bottom
+            
+//            if not, it collided to the left / right
+            if abs(contact.contactNormal.dy) > abs(contact.contactNormal.dx) {
+                
+            }
             inAir = false
             dashAvailable = true
         }

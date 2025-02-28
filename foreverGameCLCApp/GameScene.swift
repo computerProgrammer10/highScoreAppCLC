@@ -87,7 +87,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func touchUp(atPoint pos : CGPoint) {
         if jumping {
-            player.physicsBody?.velocity.dy = 0
+            player.physicsBody?.velocity.dy *= 0.5
+            player.physicsBody?.velocity.dy -= 20
         }
     }
     

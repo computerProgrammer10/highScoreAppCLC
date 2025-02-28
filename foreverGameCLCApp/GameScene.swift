@@ -62,6 +62,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func didEnd(_ contact: SKPhysicsContact) {
+        let nodeA = contact.bodyA.node!
+        let nodeB = contact.bodyB.node!
+        
+        if (nodeA.name == "ground" || nodeB.name == "ground") && (nodeA.name == "player" || nodeB.name == "player") {
+            
+//            detect if the y of the "collision direction" vector is less than the x
+//            if so, it collided on the left / right
+            
+//            if not, it collided on top / bottom
+            if onWall {
+                goingLeft = !goingLeft
+                onWall = false
+                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                print("me no on wall?")
+            }
+        }
+    }
+    
     
     func touchDown(atPoint pos : CGPoint) {
         if !inAir {
@@ -118,7 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if onWall {
-            player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            player.physicsBody?.velocity = CGVector(dx: 0, dy: -50)
         }
         
         if dashing {

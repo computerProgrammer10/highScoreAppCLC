@@ -73,6 +73,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
             let coin = (nodeA.name == "coin" ? nodeA : nodeB)
             
+            coin.removeFromParent() // destroy the coin
+            
             coins += 1
             
             coinLabel.text = "coins: \(coins)"

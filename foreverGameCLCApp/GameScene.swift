@@ -103,6 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func touchDown(atPoint pos : CGPoint) {
+        if (isPaused) {return}// force the function to not happen if the game is paused
         if !inAir {
             player.physicsBody?.velocity.dy = 1000
             inAir = true
@@ -125,6 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchUp(atPoint pos : CGPoint) {
+        if (isPaused) {return}// force the function to not happen if the game is paused
         if jumping {
             player.physicsBody?.velocity.dy *= 0.5
             player.physicsBody?.velocity.dy -= 20
@@ -148,6 +150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
+
     
     override func update(_ currentTime: TimeInterval) {
         cam.position = player.position

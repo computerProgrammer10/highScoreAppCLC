@@ -12,6 +12,9 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     var play: SKScene!
+    
+    @IBOutlet weak var pauseButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +39,19 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
-
+    
+    
+    @IBAction func pauseAction(_ sender: Any) {
+        if !play.isPaused{
+            pauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+            play.isPaused = true
+            
+        }else{
+            pauseButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
+            play.isPaused = false
+        }
+    }
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }

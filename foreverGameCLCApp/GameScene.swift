@@ -16,6 +16,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: SKSpriteNode!
     
+    var dieThing: SKSpriteNode!
+    
     var inAir = false
     
     var goingLeft = false
@@ -25,6 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var onWall = false
     
     var jumping = false
+    
+    var playerDead = true
     
     var dashAvailable = true
     
@@ -51,7 +55,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("WEEEE")
+        if playerDead {
+            return
+        }
+//        print("WEEEE")
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         
@@ -80,9 +87,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coinLabel.text = "coins: \(coins)"
             
         }
+        
+        if  (nodeA.name == "spike" || nodeB.name == "spike") && (nodeA.name == "player" || nodeB.name == "player") {
+            let spike = (nodeA.name == "spike" ? nodeA : nodeB)
+            print("WAAAAAAAAAAAgg")
+            player.physicsBody!.friction = 10
+            player.physicsBody?.allowsRotation = true
+            
+            playerDead = true
+            
+            var background = SKSpriteNode(color: .gray, size: CGSize(width: self.size.width, height: self.size.height))
+            
+            background.alpha = 0.5
+            
+            let texty = SKLabelNode(text: "you died lol")
+            texty.fontSize = 40
+            texty.fontName = "Helvetica Neue Medium"
+            
+            background.addChild(texty)
+            
+            self.addChild(background)
+            
+            dieThing = background
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
+        if playerDead {
+            return
+        }
+        
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         
@@ -103,6 +137,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func touchDown(atPoint pos : CGPoint) {
+        if playerDead {
+            dieThing.removeFromParent()
+            playerDead = false
+            player.position = CGPoint(x: 0, y: 0)
+            player.physicsBody!.friction = 0
+            player.physicsBody?.allowsRotation = false
+            
+            return
+        }
         if !inAir {
             player.physicsBody?.velocity.dy = 1000
             inAir = true
@@ -151,6 +194,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         cam.position = player.position
+        
+        if playerDead {
+            return
+        }
         
         if jumping && (player.physicsBody?.velocity.dy)! < 0 {
             jumping = false

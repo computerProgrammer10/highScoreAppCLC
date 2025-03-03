@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
-    var play: SKScene!
+    var play: GameScene!
     
     @IBOutlet weak var pauseButton: UIButton!
     
@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
             
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
-                play = scene
+                play = scene as! GameScene
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
@@ -42,13 +42,15 @@ class GameViewController: UIViewController {
     
     
     @IBAction func pauseAction(_ sender: Any) {
-        if !play.isPaused{
+        if !play.gamePaused{
             pauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
             play.isPaused = true
+            play.gamePaused = true
             
         }else{
             pauseButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
             play.isPaused = false
+            play.gamePaused = false
         }
     }
     

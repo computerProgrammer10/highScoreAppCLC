@@ -18,6 +18,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var dieThing: SKSpriteNode!
     
+    var gamePaused = false
+    
     var inAir = false
     
     var goingLeft = false
@@ -28,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var jumping = false
     
-    var playerDead = true
+    var playerDead = false
     
     var dashAvailable = true
     
@@ -78,6 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
+            print("Whats up my G")
             let coin = (nodeA.name == "coin" ? nodeA : nodeB)
             
             coin.removeFromParent() // destroy the coin
@@ -138,11 +141,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func touchDown(atPoint pos : CGPoint) {
         if playerDead {
-            dieThing.removeFromParent()
+            // BIG BRAIN move here: check if it even exists
+            if let dieThing = dieThing{
+                dieThing.removeFromParent()
+            }
             playerDead = false
-            player.position = CGPoint(x: 0, y: 0)
-            player.physicsBody!.friction = 0
-            player.physicsBody?.allowsRotation = false
+            reset()
             
             return
         }
@@ -197,10 +201,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coins = 0
         player.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
+        player.physicsBody!.friction = 0
+        player.physicsBody?.allowsRotation = false
     }
 
     
     override func update(_ currentTime: TimeInterval) {
+        if gamePaused {isPaused = true;return}else{isPaused=false} // force the game to stop if it's actually paused. meant to stop the game from continuing automatically if it's just re-selected again if it's actually paused
         cam.position = player.position
         if player.position.y <= -200{
             reset()

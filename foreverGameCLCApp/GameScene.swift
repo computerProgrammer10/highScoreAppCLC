@@ -94,24 +94,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if  (nodeA.name == "spike" || nodeB.name == "spike") && (nodeA.name == "player" || nodeB.name == "player") {
             let spike = (nodeA.name == "spike" ? nodeA : nodeB)
             print("WAAAAAAAAAAAgg")
-            player.physicsBody!.friction = 10
-            player.physicsBody?.allowsRotation = true
+            // ngl idk whats happening here
+//            player.physicsBody!.friction = 10
+//            player.physicsBody?.allowsRotation = true
             
-            playerDead = true
-            
-            var background = SKSpriteNode(color: .gray, size: CGSize(width: self.size.width, height: self.size.height))
-            
-            background.alpha = 0.5
-            
-            let texty = SKLabelNode(text: "you died lol")
-            texty.fontSize = 40
-            texty.fontName = "Helvetica Neue Medium"
-            
-            background.addChild(texty)
-            
-            self.addChild(background)
-            
-            dieThing = background
+            killPlayer()
         }
     }
     
@@ -197,8 +184,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
+    func killPlayer(){
+        playerDead = true
+        
+        var background = SKSpriteNode(color: .gray, size: CGSize(width: self.size.width, height: self.size.height))
+        
+        background.alpha = 0.5
+        
+        let texty = SKLabelNode(text: "you died lol")
+        texty.fontSize = 40
+        texty.fontName = "Helvetica Neue Medium"
+        
+        background.addChild(texty)
+        
+        background.isHidden = false
+        
+        self.addChild(background)
+        
+        dieThing = background
+    }
+    
     func reset(){
         coins = 0
+        coinLabel.text = "coins: \(coins)"
         player.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
         player.physicsBody!.friction = 0
@@ -209,8 +217,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         if gamePaused {isPaused = true;return}else{isPaused=false} // force the game to stop if it's actually paused. meant to stop the game from continuing automatically if it's just re-selected again if it's actually paused
         cam.position = player.position
-        if player.position.y <= -200{
-            reset()
+        dieThing?.position = cam.position
+        if player.position.y <= -200 && !playerDead{
+            killPlayer()
         }
         
         if playerDead {

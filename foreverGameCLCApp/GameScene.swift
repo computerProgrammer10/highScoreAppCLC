@@ -150,10 +150,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
+    func reset(){
+        coins = 0
+        player.position = CGPoint(x: 0.0, y: 0.0)
+        player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
+    }
 
     
     override func update(_ currentTime: TimeInterval) {
         cam.position = player.position
+        if player.position.y <= -200{
+            reset()
+        }
         
         if jumping && (player.physicsBody?.velocity.dy)! < 0 {
             jumping = false

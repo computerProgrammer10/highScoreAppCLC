@@ -30,9 +30,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var runSpeed = 500
     
+    var coins = 0
+    
+    var coinLabel: SKLabelNode!
+    
     override func didMove(to view: SKView) {
-        self.camera = cam
         physicsWorld.contactDelegate = self
+        
+        self.camera = cam
+        self.addChild(cam)
+        
+        coinLabel = SKLabelNode(text: "coins: 0")
+        coinLabel.fontSize = 40
+        coinLabel.fontName = "Helvetica Neue Medium"
+        
+        coinLabel.position = CGPoint(x: -200, y: 600)
+        cam.addChild(coinLabel)
         
         player = self.childNode(withName: "player") as! SKSpriteNode
     }
@@ -58,6 +71,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
+            let coin = (nodeA.name == "coin" ? nodeA : nodeB)
+            
+            coins += 1
+            
+            coinLabel.text = "coins: \(coins)"
             
         }
     }

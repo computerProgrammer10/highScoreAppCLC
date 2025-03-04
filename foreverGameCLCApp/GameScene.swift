@@ -79,6 +79,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             dashAvailable = true
         }
         
+        if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {
+//            detect if dashing, if so go through
+            if !dashing {
+                let dashGround = (nodeA.name == "dash-ground" ? nodeA : nodeB)
+                
+                dashGround.physicsBody?.collisionBitMask = 1
+//            detect if the y of the "collision direction" vector is less than the x
+//            if so, it collided on the left / right
+
+//            if not, it collided on top / bottom
+
+                if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
+                    onWall = true
+                    print("me on wall?")
+                }
+                
+                inAir = false
+                dashAvailable = true
+            }
+        }
+        
         if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
             print("Whats up my G")
             let coin = (nodeA.name == "coin" ? nodeA : nodeB)
@@ -123,6 +144,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("me no on wall?")
             }
         }
+        
+        if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {
+            let dashGround = (nodeA.name == "dash-ground" ? nodeA : nodeB)
+            
+            dashGround.physicsBody?.collisionBitMask = 0
+            
+            if !dashing {
+                if onWall {
+                    goingLeft = !goingLeft
+                    onWall = false
+                    player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                    print("me no on wall?")
+                }
+            }
+        }
     }
     
     
@@ -132,6 +168,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let dieThing = dieThing{
                 dieThing.removeFromParent()
             }
+            player.physicsBody?.allowsRotation = false
+            player.zRotation = 0
             playerDead = false
             reset()
             
@@ -187,6 +225,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func killPlayer(){
         playerDead = true
         
+        player.physicsBody?.allowsRotation = true
+        
         var background = SKSpriteNode(color: .gray, size: CGSize(width: self.size.width, height: self.size.height))
         
         background.alpha = 0.5
@@ -205,8 +245,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func reset(){
+        gamePaused = false
+        inAir = false
+        goingLeft = false
+        dashing = false
+        onWall = false
+        jumping = false
+        playerDead = false
+        dashAvailable = true
+        
         coins = 0
         coinLabel.text = "coins: \(coins)"
+        onWall = false
         player.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
         player.physicsBody!.friction = 0

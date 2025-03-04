@@ -121,6 +121,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             killPlayer()
         }
+        
+        
+        if  (nodeA.name == "dash-spike" || nodeB.name == "dash-spike") && (nodeA.name == "player" || nodeB.name == "player") {
+            
+            if !dashing {
+                let spike = (nodeA.name == "spike" ? nodeA : nodeB)
+                print("WAAAAAAAAAAAgg")
+                // ngl idk whats happening here
+                //            player.physicsBody!.friction = 10
+                //            player.physicsBody?.allowsRotation = true
+                
+                killPlayer()
+            }
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {

@@ -245,6 +245,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func reset(){
+//        reset all the goobers
         gamePaused = false
         inAir = false
         goingLeft = false

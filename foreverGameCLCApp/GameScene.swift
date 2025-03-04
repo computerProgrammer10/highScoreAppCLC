@@ -40,7 +40,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var coinLabel: SKLabelNode!
     
+    var highScoreLabel: SKLabelNode!
+    
     override func didMove(to view: SKView) {
+        if !AppData.isData(){
+            AppData.curSave = Save()
+        }
         physicsWorld.contactDelegate = self
         
         self.camera = cam
@@ -51,7 +56,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel.fontName = "Helvetica Neue Medium"
         
         coinLabel.position = CGPoint(x: -200, y: 600)
+        
         cam.addChild(coinLabel)
+        
+        highScoreLabel = SKLabelNode(text: "coins: 0")
+        highScoreLabel.fontSize = 40
+        highScoreLabel.fontName = "Helvetica Neue Medium"
+        
+        highScoreLabel.position = CGPoint(x: -200, y: 400)
+        cam.addChild(highScoreLabel)
         
         player = self.childNode(withName: "player") as! SKSpriteNode
     }
@@ -114,6 +127,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coins += 1
             
             coinLabel.text = "coins: \(coins)"
+            
+            if AppData.curSave.highScore < coins{
+                AppData.curSave.highScore = coins
+                AppData.saveData()
+            }
             
         }
         

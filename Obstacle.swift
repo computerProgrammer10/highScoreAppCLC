@@ -12,42 +12,22 @@ class Obstacle{
     static var allObstacles = [Obstacle]()
     
     var node: SKNode
-    var end: [String:String]
-    var start: [String:String]
+    var direction: String
+    var difficulty: String
     
-    
-    init(node: SKNode, end: [String : String], start: [String : String]) {
+    init(node: SKNode, direction: String, difficulty: String) {
         self.node = node
-        self.end = end
-        self.start = start
+        self.direction = direction
+        self.difficulty = difficulty
         Obstacle.allObstacles.append(self)
     }
     
-    func getClone() -> SKNode{
-        return node.copy() as! SKNode
-    }
+    // Both of these random node methods require there to be an obstacle in the first place inside of the allObstacles array
+    // and the one that uses difficulty requires at least 1 obstacle with that difficulty
     
-    func checkStart(){
-        
-    }
-    
-    static func getOpposite(topBot: String, leftRight: String) -> [String:String]{
-        var huh = ""
-        var huh2 = ""
-        if topBot == "top"{
-            huh = "bot"
-        }else{
-            huh = "top"
-        }
-        if leftRight == "right"{
-            huh2 = "left"
-        }else{
-            huh2 = "right"
-        }
-        return [huh:huh2]
-    }
-    
-    
+//    static func getRandomNodeDifficulty(difficulty: String) -> Obstacle{
+//
+//    }
     
     static func getRandomNode() -> Obstacle{
         return allObstacles[Int.random(in: 0..<allObstacles.count)]

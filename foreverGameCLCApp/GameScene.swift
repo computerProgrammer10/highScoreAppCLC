@@ -153,6 +153,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
+        if contact.bodyA.node == nil || contact.bodyB.node == nil {
+            return
+        }
+        
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         

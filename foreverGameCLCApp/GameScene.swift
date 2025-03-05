@@ -103,11 +103,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            if not, it collided on top / bottom
 
                 if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
-                    if player.position.x < dashGround.position.x {
-                        player.run(SKAction.move(to: CGPoint(x: dashGround.position.x - (dashGround.frame.width / 2 + player.frame.width / 2), y: player.position.y), duration: 0))
-                    } else {
-                        player.run(SKAction.move(to: CGPoint(x: dashGround.position.x + (dashGround.frame.width / 2 + player.frame.width / 2), y: player.position.y), duration: 0))
-                    }
                     onWall = true
                 }
                 

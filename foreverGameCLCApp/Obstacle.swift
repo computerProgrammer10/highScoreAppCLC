@@ -31,7 +31,7 @@ class Obstacle{
         
     }
     
-    static func getOpposite(topBot: String, leftRight: String) -> [String:String]{
+    private func getOpposite(topBot: String, leftRight: String) -> [String:String]{
         var huh = ""
         var huh2 = ""
         if topBot == "top"{

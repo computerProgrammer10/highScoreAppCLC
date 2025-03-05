@@ -84,10 +84,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            if not, it collided on top / bottom
             if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
                 onWall = true
+                inAir = false
+                dashAvailable = true
+                if dashing {
+                    dashing = false
+                    player.physicsBody?.velocity.dx = 0
+                }
             }
             
-            inAir = false
-            dashAvailable = true
+            print(contact.contactNormal)
+            if contact.contactNormal.dy < 0 {
+                inAir = false
+                dashAvailable = true
+            }
         }
         
         if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {

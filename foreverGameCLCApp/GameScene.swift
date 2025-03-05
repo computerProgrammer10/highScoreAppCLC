@@ -59,11 +59,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         cam.addChild(coinLabel)
         
-        highScoreLabel = SKLabelNode(text: "coins: 0")
+        highScoreLabel = SKLabelNode(text: "highest score: \(AppData.curSave.highScore)")
         highScoreLabel.fontSize = 40
         highScoreLabel.fontName = "Helvetica Neue Medium"
         
-        highScoreLabel.position = CGPoint(x: -200, y: 400)
+        highScoreLabel.position = CGPoint(x: -120, y: 500)
         cam.addChild(highScoreLabel)
         
         player = self.childNode(withName: "player") as! SKSpriteNode
@@ -73,7 +73,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if playerDead {
             return
         }
-//        print("WEEEE")
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         
@@ -85,7 +84,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            if not, it collided on top / bottom
             if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
                 onWall = true
-                print("me on wall?")
             }
             
             inAir = false
@@ -97,6 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if !dashing {
                 let dashGround = (nodeA.name == "dash-ground" ? nodeA : nodeB)
                 
+                dashGround.physicsBody?.categoryBitMask = 1
                 dashGround.physicsBody?.collisionBitMask = 1
 //            detect if the y of the "collision direction" vector is less than the x
 //            if so, it collided on the left / right
@@ -110,7 +109,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         player.run(SKAction.move(to: CGPoint(x: dashGround.position.x + (dashGround.frame.width / 2 + player.frame.width / 2), y: player.position.y), duration: 0))
                     }
                     onWall = true
-                    print("me on wall?")
                 }
                 
                 inAir = false
@@ -119,7 +117,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
-            print("Whats up my G")
             let coin = (nodeA.name == "coin" ? nodeA : nodeB)
             
             coin.removeFromParent() // destroy the coin
@@ -131,29 +128,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if AppData.curSave.highScore < coins{
                 AppData.curSave.highScore = coins
                 AppData.saveData()
+                highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
             }
             
         }
         
         if  (nodeA.name == "spike" || nodeB.name == "spike") && (nodeA.name == "player" || nodeB.name == "player") {
             let spike = (nodeA.name == "spike" ? nodeA : nodeB)
-            print("WAAAAAAAAAAAgg")
-            // ngl idk whats happening here
-//            player.physicsBody!.friction = 10
-//            player.physicsBody?.allowsRotation = true
             
             killPlayer()
         }
         
         
-        if  (nodeA.name == "dash-spike" || nodeB.name == "dash-spike") && (nodeA.name == "player" || nodeB.name == "player") {
-            
+        if (nodeA.name == "dash-spike" || nodeB.name == "dash-spike") && (nodeA.name == "player" || nodeB.name == "player") {
+//            detect if dashing, if so go through
             if !dashing {
-                let spike = (nodeA.name == "spike" ? nodeA : nodeB)
-                print("WAAAAAAAAAAAgg")
-                // ngl idk whats happening here
-                //            player.physicsBody!.friction = 10
-                //            player.physicsBody?.allowsRotation = true
+                let dashGround = (nodeA.name == "dash-spike" ? nodeA : nodeB)
+                
+                dashGround.physicsBody?.categoryBitMask = 1
+                dashGround.physicsBody?.collisionBitMask = 1
                 
                 killPlayer()
             }
@@ -168,6 +161,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let nodeA = contact.bodyA.node!
         let nodeB = contact.bodyB.node!
         
+        if (nodeA.name == "dash-spike" || nodeB.name == "dash-spike") && (nodeA.name == "player" || nodeB.name == "player") {
+            let dashGround = (nodeA.name == "dash-spike" ? nodeA : nodeB)
+            
+            dashGround.physicsBody?.categoryBitMask = 0
+            dashGround.physicsBody?.collisionBitMask = 0
+        }
+        
         if (nodeA.name == "ground" || nodeB.name == "ground") && (nodeA.name == "player" || nodeB.name == "player") {
             
 //            detect if the y of the "collision direction" vector is less than the x
@@ -178,13 +178,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 goingLeft = !goingLeft
                 onWall = false
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
-                print("me no on wall?")
             }
         }
         
         if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {
             let dashGround = (nodeA.name == "dash-ground" ? nodeA : nodeB)
             
+            dashGround.physicsBody?.categoryBitMask = 0
             dashGround.physicsBody?.collisionBitMask = 0
             
             if !dashing {
@@ -192,7 +192,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     goingLeft = !goingLeft
                     onWall = false
                     player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
-                    print("me no on wall?")
                 }
             }
         }
@@ -205,8 +204,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let dieThing = dieThing{
                 dieThing.removeFromParent()
             }
-            player.physicsBody?.allowsRotation = false
-            player.zRotation = 0
             playerDead = false
             reset()
             
@@ -218,7 +215,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             inAir = true
             jumping = true
             if onWall {
-                print("WALL JOOMP")
                 goingLeft = !goingLeft
                 onWall = false
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
@@ -262,8 +258,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func killPlayer(){
         playerDead = true
         
-        player.physicsBody?.allowsRotation = true
-        
         var background = SKSpriteNode(color: .gray, size: CGSize(width: self.size.width, height: self.size.height))
         
         background.alpha = 0.5
@@ -294,15 +288,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         coins = 0
         coinLabel.text = "coins: \(coins)"
+        highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
         onWall = false
         player.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
         player.physicsBody!.friction = 0
+        player.zRotation = 0
         player.physicsBody?.allowsRotation = false
     }
 
     
     override func update(_ currentTime: TimeInterval) {
+        
+        
         if gamePaused {isPaused = true;return}else{isPaused=false} // force the game to stop if it's actually paused. meant to stop the game from continuing automatically if it's just re-selected again if it's actually paused
         cam.position = player.position
         dieThing?.position = cam.position

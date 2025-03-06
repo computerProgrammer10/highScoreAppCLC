@@ -75,11 +75,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var obstacleNodes = [SKNode]()
         
         for i in 0...3 {
-            obstacleNodes.append(self.childNode(withName: "obstacle\(i)")!)
+            let nodey = self.childNode(withName: "obstacle\(i)")!
+            obstacleNodes.append(nodey)
+            nodey.removeFromParent()
         }
         
         
-        var obstacle0 = Obstacle(name: <#T##String#>, node: <#T##SKNode#>, direction: <#T##String#>, difficulty: <#T##String#>)
+        obstacles.append(Obstacle(node: obstacleNodes[0], direction: "vertical", difficulty: "easy"))
+        
+        obstacles.append(Obstacle(node: obstacleNodes[1], direction: "horizontal", difficulty: "easy"))
+        
+        obstacles.append(Obstacle(node: obstacleNodes[2], direction: "horizontal", difficulty: "medium"))
+        
+        obstacles.append(Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: "medium"))
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

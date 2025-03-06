@@ -13,13 +13,11 @@ class Obstacle{
     
     // matthew if you're reading this, i am gonna use this to name the obstacles. i was thinking maybe a tutorial obstacle?
     // i am gonna also insert a function that would return the obstacle by direct name down in the static functions
-    var name: String
     var node: SKNode
     var direction: String
     var difficulty: String
     
-    init(name: String, node: SKNode, direction: String, difficulty: String) {
-        self.name = name
+    init(node: SKNode, direction: String, difficulty: String) {
         self.node = node
         self.direction = direction
         self.difficulty = difficulty

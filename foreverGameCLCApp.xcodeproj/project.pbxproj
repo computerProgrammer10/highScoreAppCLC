@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		0B6705DC2D789E5D0059B846 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6705DB2D789E5D0059B846 /* Obstacle.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		238BBF422D6E062300CA4D61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -28,7 +24,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B6705DB2D789E5D0059B846 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		238BBF282D6E062100CA4D61 /* foreverGameCLCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foreverGameCLCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		238BBF412D6E062300CA4D61 /* foreverGameCLCAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foreverGameCLCAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		238BBF4B2D6E062300CA4D61 /* foreverGameCLCAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foreverGameCLCAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +79,6 @@
 				238BBF442D6E062300CA4D61 /* foreverGameCLCAppTests */,
 				238BBF4E2D6E062300CA4D61 /* foreverGameCLCAppUITests */,
 				238BBF292D6E062100CA4D61 /* Products */,
-				0B6705DB2D789E5D0059B846 /* Obstacle.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,7 +236,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B6705DC2D789E5D0059B846 /* Obstacle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,6 +44,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var highScoreLabel: SKLabelNode!
     
+    var obstacles = [Obstacle]()
+    
     override func didMove(to view: SKView) {
         if !AppData.isData(){
             AppData.curSave = Save()
@@ -69,6 +71,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         cam.addChild(highScoreLabel)
         
         player = self.childNode(withName: "player") as! SKSpriteNode
+        
+        var obstacleNodes = [SKNode]()
+        
+        for i in 0...3 {
+            obstacleNodes.append(self.childNode(withName: "obstacle\(i)")!)
+        }
+        
+        
+        var obstacle0 = Obstacle(name: <#T##String#>, node: <#T##SKNode#>, direction: <#T##String#>, difficulty: <#T##String#>)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

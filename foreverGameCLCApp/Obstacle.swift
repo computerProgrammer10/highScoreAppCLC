@@ -11,8 +11,6 @@ import SpriteKit
 class Obstacle{
     static var allObstacles = [Obstacle]()
     
-    // matthew if you're reading this, i am gonna use this to name the obstacles. i was thinking maybe a tutorial obstacle?
-    // i am gonna also insert a function that would return the obstacle by direct name down in the static functions
     var name: String
     var node: SKNode
     var direction: String
@@ -31,17 +29,17 @@ class Obstacle{
     
     // all of this code is commented out because i am going to wait until later to see how we should implement this
     
-//    static func getRandomObstacleDifficulty(difficulty: String) -> Obstacle{
-//
-//    }
-//    
-//    static func getRandomObstacle() -> Obstacle{
-//        return allObstacles[Int.random(in: 0..<allObstacles.count)]
-//    }
+    static func getRandomObstacleDifficulty(difficulty: String) -> Obstacle{
+        var hi = [Obstacle]()
+        for i in allObstacles{
+            if (i.difficulty==difficulty) {hi.append(i)};
+        }
+        return hi[Int.random(in: 0..<hi.count)]
+    }
     
-//    static func getNodeByName() -> Obstacle{
-//        // write a thing in here that will return an obstacle based on it's name
-//    }
+    static func getRandomObstacle() -> Obstacle{
+        allObstacles[Int.random(in: 0..<allObstacles.count)]
+    }
     
     
     

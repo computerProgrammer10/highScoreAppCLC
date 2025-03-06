@@ -79,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        var obstacle0 = Obstacle(name: <#T##String#>, node: <#T##SKNode#>, direction: <#T##String#>, difficulty: <#T##String#>)
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

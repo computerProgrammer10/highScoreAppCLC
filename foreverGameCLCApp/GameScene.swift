@@ -18,6 +18,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var dieThing: SKSpriteNode!
     
+    var viewController: GameViewController!
+    
     var gamePaused = false
     
     var inAir = false
@@ -266,6 +268,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func killPlayer(){
         playerDead = true
         
+        viewController.pauseButton.isHidden = true
+        
         var background = SKSpriteNode(color: .gray, size: CGSize(width: self.size.width, height: self.size.height))
         
         background.alpha = 0.5
@@ -297,7 +301,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coins = 0
         coinLabel.text = "coins: \(coins)"
         highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
-        onWall = false
+        viewController.pauseButton.isHidden = false
         player.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
         player.physicsBody!.friction = 0

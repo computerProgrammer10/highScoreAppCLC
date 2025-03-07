@@ -333,8 +333,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         if gamePaused {isPaused = true;return}else{isPaused=false} // force the game to stop if it's actually paused. meant to stop the game from continuing automatically if it's just re-selected again if it's actually paused
-        cam.position = player.position
-        dieThing?.position = cam.position
+        if !playerDead{
+            cam.position = player.position
+        }
+            dieThing?.position = cam.position
         if player.position.y <= -200 && !playerDead{
             killPlayer()
         }

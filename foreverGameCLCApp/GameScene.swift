@@ -44,7 +44,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var highScoreLabel: SKLabelNode!
     
-    var obstacles = [Obstacle]()
+    var initialSpawn: SKNode!
+    
+    var curObstacle: SKNode!
+    
+    var curObstacles = [SKNode]()
     
     override func didMove(to view: SKView) {
         if !AppData.isData(){
@@ -72,6 +76,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player = self.childNode(withName: "player") as! SKSpriteNode
         
+        initialSpawn = self.childNode(withName: "firstobstacleposition")
+        
         var obstacleNodes = [SKNode]()
         
         for i in 0...3 {
@@ -81,13 +87,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        obstacles.append(Obstacle(node: obstacleNodes[0], direction: "vertical", difficulty: "easy"))
+        Obstacle(node: obstacleNodes[0], direction: "vertical", difficulty: "easy")
         
-        obstacles.append(Obstacle(node: obstacleNodes[1], direction: "horizontal", difficulty: "easy"))
+        Obstacle(node: obstacleNodes[1], direction: "horizontal", difficulty: "easy")
         
-        obstacles.append(Obstacle(node: obstacleNodes[2], direction: "horizontal", difficulty: "medium"))
+        Obstacle(node: obstacleNodes[2], direction: "horizontal", difficulty: "medium")
         
-        obstacles.append(Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: "medium"))
+        Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: "medium")
+        
+        while curObstacles.count < 3 {
+            spawnNextObstacle()
+        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -359,6 +369,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         } else {
             
+        }
+    }
+    
+    func spawnNextObstacle()
+    {
+        var obstacle = Obstacle.getRandomObstacle()
+        if curObstacles.count == 0 {
+            curObstacles.append(obstacle.spawnAsClone(previousNode: initialSpawn))
+        } else {
+            curObstacles.append(obstacle.spawnAsClone(previousNode: curObstacles[curObstacles.count - 1]))
+            
+            if curObstacles.count > 3 {
+                curObstacles.remove(at: 0)
+            }
         }
     }
 }

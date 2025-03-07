@@ -24,12 +24,32 @@ class Obstacle{
         Obstacle.allObstacles.append(self)
     }
     
+    func spawnAsClone(previousNode: SKNode) -> SKNode
+    {
+        
+        var nodeToSpawn = SKNode()
+        
+        for child in node.children {
+            var newChild = (child as! SKSpriteNode)
+            
+            nodeToSpawn.addChild(newChild)
+        }
+        
+        var previousSize = previousNode.calculateAccumulatedFrame()
+        var newSize = nodeToSpawn.calculateAccumulatedFrame()
+        
+//        blah blah blah. position + width + other width + heihgiwethoihewoihawe oiwaehtawethioawethio it works right?
+        nodeToSpawn.position = CGPoint(x: previousNode.position.x + previousSize.size.width / 2 + newSize.size.width / 2, y: previousNode.position.y + previousSize.size.height / 2 + newSize.size.height / 2)
+        
+        return nodeToSpawn
+    }
+    
     // All of these random node methods require there to be an obstacle in the first place inside of the allObstacles array
     // and the one that uses difficulty requires at least 1 obstacle with that difficulty
     
     // all of this code is commented out because i am going to wait until later to see how we should implement this
     
-    static func getRandomObstacleDifficulty(difficulty: String) -> Obstacle{
+    static func getRandomObstacleByDifficulty(difficulty: String) -> Obstacle{
         var hi = [Obstacle]()
         for i in allObstacles{
             if (i.difficulty==difficulty) {hi.append(i)};

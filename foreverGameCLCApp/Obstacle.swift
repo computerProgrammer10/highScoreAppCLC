@@ -26,11 +26,11 @@ class Obstacle{
     
     func spawnAsClone(previousNode: SKNode) -> SKNode
     {
-        
         var nodeToSpawn = SKNode()
         
         for child in node.children {
             var newChild = (child as! SKSpriteNode)
+            newChild.removeFromParent()
             
             nodeToSpawn.addChild(newChild)
         }
@@ -38,7 +38,7 @@ class Obstacle{
         var previousSize = previousNode.calculateAccumulatedFrame()
         var newSize = nodeToSpawn.calculateAccumulatedFrame()
         
-//        blah blah blah. position + width + other width + heihgiwethoihewoihawe oiwaehtawethioawethio it works right?
+        //        blah blah blah. position + width + other width + heihgiwethoihewoihawe oiwaehtawethioawethio it works right?
         nodeToSpawn.position = CGPoint(x: previousNode.position.x + previousSize.size.width / 2 + newSize.size.width / 2, y: previousNode.position.y + previousSize.size.height / 2 + newSize.size.height / 2)
         
         return nodeToSpawn

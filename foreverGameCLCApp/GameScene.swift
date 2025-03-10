@@ -140,10 +140,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             print(contact.contactNormal)
-            if contact.contactNormal.dy < 0 {
                 inAir = false
                 dashAvailable = true
-            }
+            
         }
         
         if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {

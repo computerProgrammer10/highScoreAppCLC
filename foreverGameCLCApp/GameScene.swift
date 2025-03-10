@@ -40,9 +40,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var coins = 0
     
+    var stage = 1
+    
     var coinLabel: SKLabelNode!
     
     var highScoreLabel: SKLabelNode!
+    
+    var stageLabel: SKLabelNode!
     
     var initialSpawn: SKNode!
     
@@ -62,20 +66,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        cam.xScale = 10
 //        cam.yScale = 10
         
+        // label making
         coinLabel = SKLabelNode(text: "coins: 0")
         coinLabel.fontSize = 40
         coinLabel.fontName = "Helvetica Neue Medium"
+        coinLabel.fontColor = UIColor.yellow
         
         coinLabel.position = CGPoint(x: -200, y: 600)
         
+        
+//        highScoreLabel = SKLabelNode(text: "highest score: \(AppData.curSave.highScore)")
+//        highScoreLabel.fontSize = 40
+//        highScoreLabel.fontName = "Helvetica Neue Medium"
+//        
+//        highScoreLabel.position = CGPoint(x: -120, y: 500)
+        
+        stageLabel = SKLabelNode(text: "stage: \(stage)")
+        stageLabel.fontSize = 40
+        stageLabel.fontName = "Helvetica Neue Medium"
+        
+        stageLabel.position = CGPoint(x: -200, y: 500)
+        
         cam.addChild(coinLabel)
-        
-        highScoreLabel = SKLabelNode(text: "highest score: \(AppData.curSave.highScore)")
-        highScoreLabel.fontSize = 40
-        highScoreLabel.fontName = "Helvetica Neue Medium"
-        
-        highScoreLabel.position = CGPoint(x: -120, y: 500)
-        cam.addChild(highScoreLabel)
+        cam.addChild(stageLabel)
         
         player = self.childNode(withName: "player") as! SKSpriteNode
         
@@ -127,10 +140,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             print(contact.contactNormal)
-            if contact.contactNormal.dy < 0 {
                 inAir = false
                 dashAvailable = true
-            }
+            
         }
         
         if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {
@@ -166,7 +178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if AppData.curSave.highScore < coins{
                 AppData.curSave.highScore = coins
                 AppData.saveData()
-                highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
+//                highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
             }
             
         }
@@ -310,7 +322,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         texty.fontSize = 40
         texty.fontName = "Helvetica Neue Medium"
         
+        let texty2 = SKLabelNode(text: "highest score: \(AppData.curSave.highScore)")
+        texty2.position.y = texty.position.y - 100
+        texty2.fontSize = 40
+        texty2.fontName = "Helvetica Neue Medium"
+        texty2.fontColor = UIColor.orange
+        
         background.addChild(texty)
+        background.addChild(texty2)
         
         background.isHidden = false
         
@@ -332,7 +351,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         coins = 0
         coinLabel.text = "coins: \(coins)"
-        highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
+        stage = 1
+        stageLabel.text = "stage: 1"
+//        highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
         viewController.pauseButton.isHidden = false
         player.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
@@ -357,6 +378,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if playerDead {
             return
         }
+        
+        stageLabel.text = "stage: \(stage)"
         
         if jumping && (player.physicsBody?.velocity.dy)! < 0 {
             jumping = false

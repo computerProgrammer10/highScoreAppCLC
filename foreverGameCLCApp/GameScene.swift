@@ -217,9 +217,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
 //            if not, it collided on top / bottom
             if onWall {
-                goingLeft = !goingLeft
+//                goingLeft = !goingLeft
                 onWall = false
-                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+//                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
         }
         

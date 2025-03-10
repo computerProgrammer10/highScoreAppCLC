@@ -30,6 +30,7 @@ class Obstacle{
         
         for child in node.children {
             var newChild = (child as! SKSpriteNode)
+            newChild = (newChild.copy() as! SKSpriteNode)
             newChild.removeFromParent()
             
             nodeToSpawn.addChild(newChild)
@@ -39,7 +40,11 @@ class Obstacle{
         var newSize = nodeToSpawn.calculateAccumulatedFrame()
         
         //        blah blah blah. position + width + other width + heihgiwethoihewoihawe oiwaehtawethioawethio it works right?
-        nodeToSpawn.position = CGPoint(x: previousNode.position.x + previousSize.size.width / 2 + newSize.size.width / 2, y: previousNode.position.y + previousSize.size.height / 2 + newSize.size.height / 2)
+        var xThing = previousNode.position.x + previousSize.size.width / 2 + newSize.size.width / 2
+        var yThing = previousNode.position.y + previousSize.size.height / 2 + newSize.size.height / 2
+        
+        print("x \(xThing) y \(yThing)")
+        nodeToSpawn.position = CGPoint(x: xThing, y: yThing)
         
         return nodeToSpawn
     }

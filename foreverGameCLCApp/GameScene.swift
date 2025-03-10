@@ -63,6 +63,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.camera = cam
         self.addChild(cam)
         
+//        cam.xScale = 10
+//        cam.yScale = 10
         
         // label making
         coinLabel = SKLabelNode(text: "coins: 0")
@@ -402,14 +404,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnNextObstacle()
     {
         var obstacle = Obstacle.getRandomObstacle()
+        
+        var newObstacleNode: SKNode!
         if curObstacles.count == 0 {
-            curObstacles.append(obstacle.spawnAsClone(previousNode: initialSpawn))
+            newObstacleNode = obstacle.spawnAsClone(previousNode: initialSpawn)
+            curObstacles.append(newObstacleNode)
         } else {
-            curObstacles.append(obstacle.spawnAsClone(previousNode: curObstacles[curObstacles.count - 1]))
+            newObstacleNode = obstacle.spawnAsClone(previousNode: curObstacles[curObstacles.count - 1])
+            curObstacles.append(newObstacleNode)
             
             if curObstacles.count > 3 {
                 curObstacles.remove(at: 0)
             }
         }
+        
+        self.addChild(newObstacleNode)
     }
 }

@@ -146,13 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             print(contact.contactNormal)
             
-//            if contact.contactNormal.dy > 0 {
-//                inAir = false
-//                dashAvailable = true
-//            } /*this code doesn't work*/
-            // even if you put this thing in, the player can still bounce on the top endlessly, this just breaks the game even more
-            inAir = false
-            dashAvailable = true
+            if contact.contactNormal.dy < 0 {
+                print("i waill dieihawoiwgheaawegiohwaeghioaweg")
+                inAir = false
+                dashAvailable = true
+            }
             
         }
         
@@ -182,11 +180,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 print(contact.contactNormal)
                 
-//                if contact.contactNormal.dy > 0 {
-//                    inAir = false
-//                    dashAvailable = true
-//                }
-                inAir = false;dashAvailable=true;//same thing here, it probably won't fix anything to do that if statement
+                if contact.contactNormal.dy < 0 {
+                    inAir = false
+                    dashAvailable = true
+                }
             }
         }
         

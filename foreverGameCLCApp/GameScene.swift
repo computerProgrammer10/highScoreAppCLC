@@ -14,6 +14,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let cam = SKCameraNode()
     
+    let developerMode = false // for testing. if true, death is disabled except for falling off
+    
     var player: SKSpriteNode!
     
     var dieThing: SKSpriteNode!
@@ -193,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if stage > 1
             {
-                curObstacles.remove(at: 0)
+                spawnNextObstacle()
             }
             
             stage += 1
@@ -221,7 +223,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if  (nodeA.name == "spike" || nodeB.name == "spike") && (nodeA.name == "player" || nodeB.name == "player") {
             let spike = (nodeA.name == "spike" ? nodeA : nodeB)
             
-            killPlayer()
+            if !developerMode{
+                killPlayer()
+            }
         }
         
         
@@ -233,7 +237,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 dashGround.physicsBody?.categoryBitMask = 1
                 dashGround.physicsBody?.collisionBitMask = 1
                 
-                killPlayer()
+                if !developerMode{
+                    killPlayer()
+                }
             }
         }
     }
@@ -483,21 +489,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 dashShadowTimer = 0.1
             }
         }
-        // commenting this code out because it has no use right now, but
-        // i think we should change the color of the obstacles maybe while the player has dashed to signal that they can go through it
-//        for obs in curObstacles{
-//            for thing in obs.children{
-//                if thing.name == "dash-spike" || thing.name == "dash-ground"{
-//                    print("Hello!")
-//                    let thing2 = thing as! SKSpriteNode
-//                    if didDash{
-//                        thing2.color = .green
-//                    }else{
-//                        thing2.color = .systemPink
-//                    }
-//                }
-//            }
-//        }
         
         lastTime = currentTime
     }
@@ -515,7 +506,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             curObstacles.append(newObstacleNode)
             
             if curObstacles.count > 3 {
-                curObstacles.remove(at: 0)
+                curObstacles.remove(at: 0).removeFromParent()
             }
         }
         

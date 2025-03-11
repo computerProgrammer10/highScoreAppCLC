@@ -44,6 +44,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var stage = 1
     
+    var lastTime = -1.0
+    
     var coinLabel: SKLabelNode!
     
     var highScoreLabel: SKLabelNode!
@@ -407,8 +409,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.allowsRotation = false
     }
 
+    var dashShadowTimer = 0.1
     
     override func update(_ currentTime: TimeInterval) {
+        if lastTime == -1
+        {
+            lastTime = currentTime
+        }
+        
+        var dt = currentTime - lastTime
         
         
         if gamePaused {isPaused = true;return}else{isPaused=false} // force the game to stop if it's actually paused. meant to stop the game from continuing automatically if it's just re-selected again if it's actually paused
@@ -443,9 +452,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if dashing {
             player.physicsBody?.velocity.dx -= 100 * (goingLeft ? -1 : 1)
+            dashShadowTimer -= dt
+            
+            if dashShadowTimer < 0 {
+                dashShadowTimer = 0.1
+                
+                var shadow = SKSpriteNode(color: .white, size: CGSize(width: 75, height: 75))
+                
+                shadow.zPosition = -1
+                
+                shadow.position = player.position
+                
+                let fadeOutAction = SKAction.fadeAlpha(to: 0, duration: 0.5)
+                
+                let completionAction = SKAction.run {
+                    shadow.removeFromParent()
+                }
+                
+                let sequence = SKAction.sequence([fadeOutAction, completionAction])
+                
+                self.addChild(shadow)
+                
+                shadow.run(sequence)
+                
+                
+            }
             
             if (abs(player.physicsBody?.velocity.dx as! CGFloat)) < CGFloat(runSpeed) {
                 dashing = false
+                dashShadowTimer = 0.1
             }
         }
         // commenting this code out because it has no use right now, but
@@ -463,6 +498,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                }
 //            }
 //        }
+        
+        lastTime = currentTime
     }
     
     func spawnNextObstacle()

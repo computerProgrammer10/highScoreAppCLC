@@ -375,6 +375,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
         viewController.pauseButton.isHidden = false
         player.position = CGPoint(x: 0.0, y: 0.0)
+        cam.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
         player.physicsBody!.friction = 0
         player.zRotation = 0
@@ -387,10 +388,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if gamePaused {isPaused = true;return}else{isPaused=false} // force the game to stop if it's actually paused. meant to stop the game from continuing automatically if it's just re-selected again if it's actually paused
         if !playerDead{
-            cam.position = player.position
+            if cam.position.y < player.position.y{
+                cam.position.y = player.position.y
+            }
+            cam.position.x = player.position.x
         }
             dieThing?.position = cam.position
-        if player.position.y <= -200 && !playerDead{
+        if player.position.y <= (cam.position.y-self.frame.height/2) && !playerDead{
             killPlayer()
         }
         

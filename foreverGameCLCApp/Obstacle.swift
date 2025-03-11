@@ -43,8 +43,6 @@ class Obstacle{
         var xThing = previousNode.position.x + previousSize.size.width / 2 + newSize.size.width / 2
         var yThing = (previousNode.position.y + previousSize.size.height / 2 + newSize.size.height / 2) - 50
         // - 20 because no srhijpowhjpiwhijpiwehij
-        
-        print("x \(xThing) y \(yThing)")
         nodeToSpawn.position = CGPoint(x: xThing, y: yThing)
         
         return nodeToSpawn

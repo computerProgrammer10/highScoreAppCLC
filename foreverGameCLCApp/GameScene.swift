@@ -141,16 +141,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.physicsBody?.velocity.dx = 0
                 }
             } else {
-                    player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                
+                if contact.contactNormal.dy > -0.1 {
+                    inAir = false
+                    dashAvailable = true
+                }
             }
             
-            print(contact.contactNormal)
-            
-            if contact.contactNormal.dy < 0 {
-                print("i waill dieihawoiwgheaawegiohwaeghioaweg")
-                inAir = false
-                dashAvailable = true
-            }
+            print("contact normal: \(contact.contactNormal)")
             
         }
         
@@ -177,8 +176,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 } else {
                     player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
                 }
-                
-                print(contact.contactNormal)
                 
                 if contact.contactNormal.dy < 0 {
                     inAir = false

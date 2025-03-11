@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var dashAvailable = true
     
-    var runSpeed = 500
+    var runSpeed = 400
     
     var coins = 0
     
@@ -164,9 +164,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                 if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
                     onWall = true
+                    inAir = false
+                    dashAvailable = true
+                    if dashing {
+                        dashing = false
+                        player.physicsBody?.velocity.dx = 0
+                    }
+                } else {
+                    player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
                 }
                 
-                if contact.contactNormal.dy < 0 {
+                print(contact.contactNormal)
+                
+                if contact.contactNormal.dy > 0 {
                     inAir = false
                     dashAvailable = true
                 }

@@ -293,7 +293,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
         } else if dashAvailable {
-            player.physicsBody?.velocity.dx = (3000 * (goingLeft ? -1 : 1))
+            player.physicsBody?.velocity.dx = (2500 * (goingLeft ? -1 : 1))
             dashing = true
             dashAvailable = false
         }

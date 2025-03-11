@@ -36,6 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var dashAvailable = true
     
+    var didDash = false // confusion? ok let me explain then. this will say whether the player HAS dashed before hitting something like the ground or whatever. this is supposed to try to fix the dashing issue
+    
     var runSpeed = 400
     
     var coins = 0
@@ -53,6 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var curObstacle: SKNode!
     
     var curObstacles = [SKNode]()
+    
     
     override func didMove(to view: SKView) {
         if !AppData.isData(){
@@ -122,6 +125,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let nodeB = contact.bodyB.node!
         
         if (nodeA.name == "ground" || nodeB.name == "ground") && (nodeA.name == "player" || nodeB.name == "player") {
+            // immediately set didDash to false because there's no point in it anymore
+            didDash = false
             
 //            detect if the y of the "collision direction" vector is less than the x
 //            if so, it collided on the left / right
@@ -136,21 +141,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.physicsBody?.velocity.dx = 0
                 }
             } else {
-                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                    player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
             
             print(contact.contactNormal)
             
-            if contact.contactNormal.dy > 0 {
-                inAir = false
-                dashAvailable = true
-            }
+//            if contact.contactNormal.dy > 0 {
+//                inAir = false
+//                dashAvailable = true
+//            } /*this code doesn't work*/
+            // even if you put this thing in, the player can still bounce on the top endlessly, this just breaks the game even more
+            inAir = false
+            dashAvailable = true
             
         }
         
         if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {
 //            detect if dashing, if so go through
-            if !dashing {
+            if !dashing || !didDash { // adding didDash to check if they did dash before
                 let dashGround = (nodeA.name == "dash-ground" ? nodeA : nodeB)
                 
                 dashGround.physicsBody?.categoryBitMask = 1
@@ -174,10 +182,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 print(contact.contactNormal)
                 
-                if contact.contactNormal.dy > 0 {
-                    inAir = false
-                    dashAvailable = true
-                }
+//                if contact.contactNormal.dy > 0 {
+//                    inAir = false
+//                    dashAvailable = true
+//                }
+                inAir = false;dashAvailable=true;//same thing here, it probably won't fix anything to do that if statement
             }
         }
         
@@ -222,7 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (nodeA.name == "dash-spike" || nodeB.name == "dash-spike") && (nodeA.name == "player" || nodeB.name == "player") {
 //            detect if dashing, if so go through
-            if !dashing {
+            if !dashing || !didDash {
                 let dashGround = (nodeA.name == "dash-spike" ? nodeA : nodeB)
                 
                 dashGround.physicsBody?.categoryBitMask = 1
@@ -308,6 +317,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if dashAvailable {
             player.physicsBody?.velocity.dx = (2500 * (goingLeft ? -1 : 1))
             dashing = true
+            didDash = true
             dashAvailable = false
         }
     }
@@ -376,6 +386,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         inAir = false
         goingLeft = false
         dashing = false
+        didDash = false
         onWall = false
         jumping = false
         playerDead = false
@@ -442,9 +453,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (abs(player.physicsBody?.velocity.dx as! CGFloat)) < CGFloat(runSpeed) {
                 dashing = false
             }
-        } else {
-            
         }
+        // commenting this code out because it has no use right now, but
+        // i think we should change the color of the obstacles maybe while the player has dashed to signal that they can go through it
+//        for obs in curObstacles{
+//            for thing in obs.children{
+//                if thing.name == "dash-spike" || thing.name == "dash-ground"{
+//                    print("Hello!")
+//                    let thing2 = thing as! SKSpriteNode
+//                    if didDash{
+//                        thing2.color = .green
+//                    }else{
+//                        thing2.color = .systemPink
+//                    }
+//                }
+//            }
+//        }
     }
     
     func spawnNextObstacle()

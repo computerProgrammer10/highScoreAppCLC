@@ -137,11 +137,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     dashing = false
                     player.physicsBody?.velocity.dx = 0
                 }
+            } else {
+                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
             
             print(contact.contactNormal)
+            
+            if contact.contactNormal.dy > 0 {
                 inAir = false
                 dashAvailable = true
+            }
             
         }
         
@@ -161,8 +166,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     onWall = true
                 }
                 
-                inAir = false
-                dashAvailable = true
+                if contact.contactNormal.dy < 0 {
+                    inAir = false
+                    dashAvailable = true
+                }
             }
         }
         
@@ -231,6 +238,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if onWall {
 //                goingLeft = !goingLeft
                 onWall = false
+                inAir = true
 //                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
         }
@@ -243,9 +251,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if !dashing {
                 if onWall {
-                    goingLeft = !goingLeft
+//                    goingLeft = !goingLeft
                     onWall = false
-                    player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                    inAir = true
+//                    player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
                 }
             }
         }

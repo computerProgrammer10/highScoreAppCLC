@@ -111,9 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: "medium")
         
-        while curObstacles.count < 3 {
-            spawnNextObstacle()
-        }
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -181,6 +179,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     dashAvailable = true
                 }
             }
+        }
+        
+        if  (nodeA.name == "finish-area" || nodeB.name == "finish-area") && (nodeA.name == "player" || nodeB.name == "player") {
+            let finishArea = (nodeA.name == "finish-area" ? nodeA : nodeB)
+            
+            finishArea.removeFromParent()
+            
+            if stage > 1
+            {
+                curObstacles.remove(at: 0)
+            }
+            
+            stage += 1
+            
+            stageLabel.text = "stage: \(stage)"
         }
         
         if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
@@ -373,6 +386,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stage = 1
         stageLabel.text = "stage: 1"
 //        highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
+        
+        for i in curObstacles {
+            i.removeFromParent()
+        }
+        
+        curObstacles.removeAll()
+        
         viewController.pauseButton.isHidden = false
         player.position = CGPoint(x: 0.0, y: 0.0)
         cam.position = CGPoint(x: 0.0, y: 0.0)
@@ -400,6 +420,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if playerDead {
             return
+        }
+        
+        while curObstacles.count < 3 {
+            spawnNextObstacle()
         }
         
         stageLabel.text = "stage: \(stage)"

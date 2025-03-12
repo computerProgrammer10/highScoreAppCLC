@@ -112,13 +112,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        Obstacle(node: obstacleNodes[0], direction: "vertical", difficulty: "easy")
+        Obstacle(node: obstacleNodes[0], direction: "vertical", difficulty: 1)
         
-        Obstacle(node: obstacleNodes[1], direction: "horizontal", difficulty: "easy")
+        Obstacle(node: obstacleNodes[1], direction: "horizontal", difficulty: 1)
         
-        Obstacle(node: obstacleNodes[2], direction: "horizontal", difficulty: "medium")
+        Obstacle(node: obstacleNodes[2], direction: "horizontal", difficulty: 2)
         
-        Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: "medium")
+        Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: 2)
         
         
     }
@@ -515,8 +515,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func spawnNextObstacle()
     {
-        var obstacle = Obstacle.getRandomObstacle()
-        
+        var obstacle : Obstacle!
+        if stage < 5{
+            obstacle = Obstacle.getRandomObstacleOnlyDifficulty(difficulty: 1)
+        }else if stage == 5{
+            obstacle = Obstacle.getRandomObstacleOnlyDifficulty(difficulty: 2)
+        }else{
+            obstacle = Obstacle.getRandomObstacleWithinDifficulty(difficulty: 2)
+        }
         var newObstacleNode: SKNode!
         if curObstacles.count == 0 {
             newObstacleNode = obstacle.spawnAsClone(previousNode: initialSpawn)

@@ -15,9 +15,9 @@ class Obstacle{
     // i am gonna also insert a function that would return the obstacle by direct name down in the static functions
     var node: SKNode
     var direction: String
-    var difficulty: String
+    var difficulty: Int
     
-    init(node: SKNode, direction: String, difficulty: String) {
+    init(node: SKNode, direction: String, difficulty: Int) {
         self.node = node
         self.direction = direction
         self.difficulty = difficulty
@@ -53,7 +53,18 @@ class Obstacle{
     
     // all of this code is commented out because i am going to wait until later to see how we should implement this
     
-    static func getRandomObstacleByDifficulty(difficulty: String) -> Obstacle{
+    
+    //WITHIN difficulty = levels with max difficulty
+    static func getRandomObstacleWithinDifficulty(difficulty: Int) -> Obstacle{
+        var hi = [Obstacle]()
+        for i in allObstacles{
+            if (i.difficulty<=difficulty) {hi.append(i)};
+        }
+        return hi[Int.random(in: 0..<hi.count)]
+    }
+    
+    //ONLY difficulty = only levels with that specific difficulty
+    static func getRandomObstacleOnlyDifficulty(difficulty: Int) -> Obstacle{
         var hi = [Obstacle]()
         for i in allObstacles{
             if (i.difficulty==difficulty) {hi.append(i)};

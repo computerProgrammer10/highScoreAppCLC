@@ -32,6 +32,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var onWall = false
     
+    var onFloor = false
+    
     var jumping = false
     
     var playerDead = false
@@ -144,13 +146,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     dashing = false
                     player.physicsBody?.velocity.dx = 0
                 }
-            } else {
-                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+            } else if contact.contactNormal.dy > -0.1 {
+                inAir = false
+                dashAvailable = true
+                onFloor = true
                 
-                if contact.contactNormal.dy > -0.1 {
-                    inAir = false
-                    dashAvailable = true
+                if onWall {
+                    goingLeft = !goingLeft
+                    onWall = false
                 }
+                
+                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
             
             print("contact normal: \(contact.contactNormal)")
@@ -272,9 +278,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if onWall {
 //                goingLeft = !goingLeft
                 onWall = false
-                inAir = true
+                
+                if contact.contactNormal.dy < 0.1 {
+                    inAir = true
+                }
 //                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
+            
         }
         
         if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {

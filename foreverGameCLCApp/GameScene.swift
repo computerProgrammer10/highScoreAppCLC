@@ -80,20 +80,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel.fontSize = 40
         coinLabel.fontName = "Helvetica Neue Medium"
         coinLabel.fontColor = UIColor.yellow
-        
         coinLabel.position = CGPoint(x: -200, y: 600)
-        
-        
-//        highScoreLabel = SKLabelNode(text: "highest score: \(AppData.curSave.highScore)")
-//        highScoreLabel.fontSize = 40
-//        highScoreLabel.fontName = "Helvetica Neue Medium"
-//        
-//        highScoreLabel.position = CGPoint(x: -120, y: 500)
         
         stageLabel = SKLabelNode(text: "stage: \(stage)")
         stageLabel.fontSize = 40
         stageLabel.fontName = "Helvetica Neue Medium"
-        
         stageLabel.position = CGPoint(x: -200, y: 500)
         
         cam.addChild(coinLabel)
@@ -160,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             } else {
-                print(
+                
             }
             
             
@@ -418,7 +409,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel.text = "coins: \(coins)"
         stage = 1
         stageLabel.text = "stage: 1"
-//        highScoreLabel.text = "highest score: \(AppData.curSave.highScore)"
         
         for i in curObstacles {
             i.removeFromParent()

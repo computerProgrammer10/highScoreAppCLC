@@ -122,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    
+    var flur = 0
     func didBegin(_ contact: SKPhysicsContact) {
         if playerDead {
             return
@@ -147,6 +147,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.physicsBody?.velocity.dx = 0
                 }
             } else if contact.contactNormal.dy > -0.1 {
+                flur += 1
+                print("i go on flur \(flur)")
                 inAir = false
                 dashAvailable = true
                 onFloor = true
@@ -157,9 +159,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+            } else {
+                print(
             }
             
-            print("contact normal: \(contact.contactNormal)")
             
         }
         
@@ -174,7 +177,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            if so, it collided on the left / right
 
 //            if not, it collided on top / bottom
-
                 if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
                     onWall = true
                     inAir = false
@@ -183,14 +185,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         dashing = false
                         player.physicsBody?.velocity.dx = 0
                     }
-                } else {
+                } else if contact.contactNormal.dy > -0.1 {
+                    inAir = false
+                    dashAvailable = true
+                    onFloor = true
+                    
+                    if onWall {
+                        goingLeft = !goingLeft
+                        onWall = false
+                    }
+                    
                     player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
                 }
                 
-                if contact.contactNormal.dy < 0 {
-                    inAir = false
-                    dashAvailable = true
-                }
             }
         }
         
@@ -295,10 +302,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if !dashing {
                 if onWall {
-//                    goingLeft = !goingLeft
+    //                goingLeft = !goingLeft
                     onWall = false
-                    inAir = true
-//                    player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                    
+                    if contact.contactNormal.dy < 0.1 {
+                        inAir = true
+                    }
+    //                player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
                 }
             }
         }

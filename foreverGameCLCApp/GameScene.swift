@@ -122,6 +122,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let nodeB = contact.bodyB.node!
         
         if (nodeA.name == "ground" || nodeB.name == "ground") && (nodeA.name == "player" || nodeB.name == "player") {
+            
+            let ground = (nodeA.name == "ground" ? nodeA : nodeB)
             // immediately set didDash to false because there's no point in it anymore
             didDash = false
             
@@ -137,9 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     dashing = false
                     player.physicsBody?.velocity.dx = 0
                 }
-            } else if contact.contactNormal.dy > -0.1 {
-                flur += 1
-                print("i go on flur \(flur)")
+            } else if ground.position.y < player.position.y {
                 inAir = false
                 dashAvailable = true
                 onFloor = true
@@ -176,7 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         dashing = false
                         player.physicsBody?.velocity.dx = 0
                     }
-                } else if contact.contactNormal.dy > -0.1 {
+                } else if dashGround.position.y < player.position.y {
                     inAir = false
                     dashAvailable = true
                     onFloor = true
@@ -187,6 +187,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                     
                     player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
+                } else {
+                    
                 }
                 
             }

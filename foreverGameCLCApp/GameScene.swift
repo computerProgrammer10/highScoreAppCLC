@@ -375,18 +375,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         background.alpha = 0.5
         
-        let texty = SKLabelNode(text: "you died lol")
-        texty.fontSize = 40
+        let texty = SKLabelNode(text: "you died lol 💀")
+        texty.fontSize = 60
         texty.fontName = "Helvetica Neue Medium"
+        texty.position.y += 150
         
         let texty2 = SKLabelNode(text: "highest score: \(AppData.curSave.highScore)")
-        texty2.position.y = texty.position.y - 100
         texty2.fontSize = 40
         texty2.fontName = "Helvetica Neue Medium"
         texty2.fontColor = UIColor.orange
         
+        let texty3 = SKLabelNode(text: "Tap anywhere to restart")
+        texty3.position.y = texty.position.y - 300
+        texty3.fontSize = 45
+        texty3.fontName = "Helvetica Neue Medium"
+        texty3.fontColor = UIColor.green
+        
         background.addChild(texty)
         background.addChild(texty2)
+        background.addChild(texty3)
         
         background.isHidden = false
         

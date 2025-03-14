@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var obstacleNodes = [SKNode]()
         
-        for i in 0...3 {
+        for i in 0...4 {
             let nodey = self.childNode(withName: "obstacle\(i)")!
             obstacleNodes.append(nodey)
             nodey.removeFromParent()
@@ -110,6 +110,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Obstacle(node: obstacleNodes[2], direction: "horizontal", difficulty: 2)
         
         Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: 2)
+        
+        Obstacle(node: obstacleNodes[4], direction: "vertical", difficulty: 1)
         
         
     }

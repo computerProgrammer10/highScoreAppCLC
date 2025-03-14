@@ -515,9 +515,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnNextObstacle()
     {
         var obstacle : Obstacle!
-        if stage < 5{
+        if stage < 3{
             obstacle = Obstacle.getRandomObstacleOnlyDifficulty(difficulty: 1)
-        }else if stage == 5{
+        }else if stage == 3{
             obstacle = Obstacle.getRandomObstacleOnlyDifficulty(difficulty: 2)
         }else{
             obstacle = Obstacle.getRandomObstacleWithinDifficulty(difficulty: 2)

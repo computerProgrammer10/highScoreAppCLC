@@ -111,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Obstacle(node: obstacleNodes[3], direction: "vertical", difficulty: 2)
         
-        Obstacle(node: obstacleNodes[4], direction: "vertical", difficulty: 1)
+        Obstacle(node: obstacleNodes[4], direction: "vertical", difficulty: 2)
         
         
     }

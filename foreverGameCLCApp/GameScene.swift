@@ -216,7 +216,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if  (nodeA.name == "coin" || nodeB.name == "coin") && (nodeA.name == "player" || nodeB.name == "player") {
-            let coin = (nodeA.name == "coin" ? nodeA : nodeB)
+            let coin = (nodeA.name == "coin" ? nodeA : nodeB) as! SKSpriteNode
+            
+            // start disappearing code
+            let shadow = SKSpriteNode(color: .yellow, size: CGSize(width: coin.size.width, height: coin.size.height))
+            
+            shadow.zPosition = -1
+            //  i remembered that you told me that it wasn't showing up in the position because it didn't have the same parent as the coin. so i figured, why not just add the shadow thing to the parent of the coin
+            coin.parent?.addChild(shadow)
+            shadow.position = coin.position
+            let shrinkAction = SKAction.resize(toWidth: 0.0, height: 0.0, duration: 0.5)
+            
+            let completionAction = SKAction.run {
+                shadow.removeFromParent()
+            }
+            
+            let sequence = SKAction.sequence([shrinkAction, completionAction])
+            
+            shadow.run(sequence)
+            // end disappearing code
             
             coin.removeFromParent() // destroy the coin
             

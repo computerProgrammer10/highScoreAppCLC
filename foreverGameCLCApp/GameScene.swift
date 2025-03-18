@@ -128,6 +128,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA.name == "ground" || nodeB.name == "ground") && (nodeA.name == "player" || nodeB.name == "player") {
             
             let ground = (nodeA.name == "ground" ? nodeA : nodeB)
+            
+            let parenty = ground.parent!
             // immediately set didDash to false because there's no point in it anymore
             didDash = false
             
@@ -143,7 +145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     dashing = false
                     player.physicsBody?.velocity.dx = 0
                 }
-            } else if ground.position.y < player.position.y {
+            } else if parenty.convert(ground.position, from: self).y < player.position.y {
                 inAir = false
                 dashAvailable = true
                 onFloor = true
@@ -451,8 +453,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if gamePaused {isPaused = true;return}else{isPaused=false} // force the game to stop if it's actually paused. meant to stop the game from continuing automatically if it's just re-selected again if it's actually paused
         if !playerDead{
-            if cam.position.y < player.position.y{
-                cam.position.y = player.position.y
+            if cam.position.y + 200 < player.position.y{
+                cam.position.y = player.position.y - 200
             }
             cam.position.x = player.position.x
         }
@@ -471,12 +473,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         stageLabel.text = "stage: \(stage)"
         
-        if jumping && (player.physicsBody?.velocity.dy)! < 0 {
+        if (player.physicsBody?.velocity.dy)! < 0 {
             jumping = false
         }
         
         if onWall {
             player.physicsBody?.velocity = CGVector(dx: 0, dy: -50)
+        }
+        
+//        print(jumping ? "i jumpy" : "i no jumpy")
+        if !jumping {
+            player.physicsBody?.velocity.dy -= 20
         }
         
         if dashing {

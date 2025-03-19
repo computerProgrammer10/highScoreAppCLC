@@ -555,11 +555,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if dashShadowTimer < 0 {
                 dashShadowTimer = 0.1
                 
-                var shadow = SKSpriteNode(color: .white, size: CGSize(width: 75, height: 75))
+                var shadow = SKSpriteNode(texture: frames[3], size: CGSize(width: 75, height: 75))
+                
                 
                 shadow.zPosition = -1
-                
+
                 shadow.position = player.position
+                shadow.xScale = 1 * (goingLeft ? -1 : 1)
+
                 
                 let fadeOutAction = SKAction.fadeAlpha(to: 0, duration: 0.5)
                 

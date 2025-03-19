@@ -66,6 +66,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var curObstacles = [SKNode]()
     
+    var frames = [SKTexture]()
+    
     
     override func didMove(to view: SKView) {
         if !AppData.isData(){
@@ -78,6 +80,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 //        cam.xScale = 10
 //        cam.yScale = 10
+        
+        let atlas = SKTextureAtlas(named: "player")
+        
+        
+        for i in 1...atlas.textureNames.count {
+            let textureName = "\(i)"
+            let texture = atlas.textureNamed(textureName)
+            frames.append(texture)
+        }
+        
         
         // label making
         
@@ -122,7 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Obstacle(node: obstacleNodes[5], direction: "vertical", difficulty: 1)
         
-        
+        playWalk()
     }
     var flur = 0
     func didBegin(_ contact: SKPhysicsContact) {
@@ -146,6 +158,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            if not, it collided on top / bottom
             if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
                 onWall = true
+                
+                print("ground pos: \(self.convert(ground.position, from: parenty).x), player : \(player.position.x)")
+                if self.convert(ground.position, from: parenty).x < player.position.x {
+                    playSlideLeft()
+                } else {
+                    playSlideRight()
+                }
                 inAir = false
                 dashAvailable = true
                 if dashing {
@@ -156,6 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 inAir = false
                 dashAvailable = true
                 onFloor = true
+                playWalk()
                 
                 if onWall {
                     goingLeft = !goingLeft
@@ -171,9 +191,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (nodeA.name == "dash-ground" || nodeB.name == "dash-ground") && (nodeA.name == "player" || nodeB.name == "player") {
+            
+            
 //            detect if dashing, if so go through
             if !dashing || !didDash { // adding didDash to check if they did dash before
                 let dashGround = (nodeA.name == "dash-ground" ? nodeA : nodeB)
+                
+                let parenty = dashGround.parent!
                 
                 dashGround.physicsBody?.categoryBitMask = 1
                 dashGround.physicsBody?.collisionBitMask = 1
@@ -183,16 +207,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            if not, it collided on top / bottom
                 if abs(contact.contactNormal.dy) < abs(contact.contactNormal.dx) {
                     onWall = true
+                    if self.convert(dashGround.position, from: parenty).x < player.position.x {
+                        playSlideLeft()
+                    } else {
+                        playSlideRight()
+                    }
                     inAir = false
                     dashAvailable = true
                     if dashing {
                         dashing = false
                         player.physicsBody?.velocity.dx = 0
                     }
-                } else if dashGround.position.y < player.position.y {
+                } else if parenty.convert(dashGround.position, from: self).y < player.position.y {
                     inAir = false
                     dashAvailable = true
                     onFloor = true
+                    playWalk()
                     
                     if onWall {
                         goingLeft = !goingLeft
@@ -309,6 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            if not, it collided on top / bottom
             if onWall {
 //                goingLeft = !goingLeft
+                playJump()
                 onWall = false
                 
                 if contact.contactNormal.dy < 0.1 {
@@ -327,6 +358,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if !dashing {
                 if onWall {
+                    playJump()
     //                goingLeft = !goingLeft
                     onWall = false
                     
@@ -358,6 +390,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             jumping = true
             if onWall {
                 goingLeft = !goingLeft
+                playJump()
                 onWall = false
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
@@ -441,6 +474,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         goingLeft = false
         dashing = false
         didDash = false
+        playWalk()
         onWall = false
         jumping = false
         playerDead = false
@@ -469,6 +503,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dashShadowTimer = 0.1
     
     override func update(_ currentTime: TimeInterval) {
+        
         
         background.position = cam.position
         if lastTime == -1
@@ -576,4 +611,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(newObstacleNode)
     }
+    
+    func playWalk()
+    {
+        player.removeAllActions()
+        var coolFrames = [frames[0], frames[1], frames[2], frames[1]]
+        let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
+        
+        player.run(SKAction.repeatForever(animation))
+    }
+    
+    func playSlideLeft()
+    {
+        player.removeAllActions()
+        var coolFrames = [frames[2]]
+        let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
+        
+        player.run(SKAction.repeatForever(animation))
+    }
+    
+    func playSlideRight()
+    {
+        print("righit")
+        player.removeAllActions()
+        var coolFrames = [frames[0]]
+        let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
+        
+        player.run(SKAction.repeatForever(animation))
+    }
+    
+    func playDash()
+    {
+        player.removeAllActions()
+        var coolFrames = [frames[3]]
+        let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
+        
+        player.run(SKAction.repeatForever(animation))
+    }
+    
+    func playJump()
+    {
+        player.removeAllActions()
+        var coolFrames = [frames[1]]
+        let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
+        
+        player.run(SKAction.repeatForever(animation))
+    }
+    
 }

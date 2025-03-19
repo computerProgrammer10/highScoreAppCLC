@@ -222,6 +222,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let shadow = SKSpriteNode(color: .yellow, size: CGSize(width: coin.size.width, height: coin.size.height))
             
             shadow.zPosition = -1
+            shadow.texture = SKTexture(image: UIImage(named: "cheese")!)
             //  i remembered that you told me that it wasn't showing up in the position because it didn't have the same parent as the coin. so i figured, why not just add the shadow thing to the parent of the coin
             coin.parent?.addChild(shadow)
             shadow.position = coin.position

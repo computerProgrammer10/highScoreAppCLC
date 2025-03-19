@@ -20,6 +20,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var dieThing: SKSpriteNode!
     
+    var background: SKNode!
+    
     var viewController: GameViewController!
     
     var gamePaused = false
@@ -50,6 +52,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lastTime = -1.0
     
+    var lastPos = CGPoint(x: 0, y: 0)
+    
     var coinLabel: SKLabelNode!
     
     var highScoreLabel: SKLabelNode!
@@ -76,6 +80,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        cam.yScale = 10
         
         // label making
+        
+        background = self.childNode(withName: "background")
+        
         coinLabel = SKLabelNode(text: "coins: 0")
         coinLabel.fontSize = 40
         coinLabel.fontName = "Helvetica Neue Medium"
@@ -461,6 +468,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dashShadowTimer = 0.1
     
     override func update(_ currentTime: TimeInterval) {
+        
+        background.position = cam.position
         if lastTime == -1
         {
             lastTime = currentTime

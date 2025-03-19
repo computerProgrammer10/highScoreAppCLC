@@ -504,8 +504,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        
-        background.position = cam.position
         if lastTime == -1
         {
             lastTime = currentTime
@@ -521,6 +519,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             cam.position.x = player.position.x
         }
+        background.position = cam.position
             dieThing?.position = cam.position
         if player.position.y <= (cam.position.y-self.frame.height/2) && !playerDead{
             killPlayer()

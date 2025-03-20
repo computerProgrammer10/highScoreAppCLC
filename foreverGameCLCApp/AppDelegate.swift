@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // use this method for eating banananananananananananananana
     func applicationWillResignActive(_ application: UIApplication) {
-        print("shittin time")
         if let view = window?.rootViewController?.view as? SKView
         {
             print("wee")

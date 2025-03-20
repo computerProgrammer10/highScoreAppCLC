@@ -388,9 +388,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.physicsBody?.velocity.dy = 1000
             inAir = true
             jumping = true
+            playJump()
             if onWall {
                 goingLeft = !goingLeft
-                playJump()
                 onWall = false
                 player.physicsBody?.velocity.dx = CGFloat(runSpeed * (goingLeft ? -1 : 1))
             }
@@ -618,7 +618,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         player.removeAllActions()
         var coolFrames = [frames[0], frames[1], frames[2], frames[1]]
-        let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
+        let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.2)
         
         player.run(SKAction.repeatForever(animation))
     }

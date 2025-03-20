@@ -100,11 +100,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel.fontName = "Helvetica Neue Medium"
         coinLabel.fontColor = UIColor.yellow
         coinLabel.position = CGPoint(x: -200, y: 600)
+        coinLabel.zPosition = 1
         
         stageLabel = SKLabelNode(text: "stage: \(stage)")
         stageLabel.fontSize = 40
         stageLabel.fontName = "Helvetica Neue Medium"
         stageLabel.position = CGPoint(x: -200, y: 500)
+        stageLabel.zPosition = 1
+
         
         cam.addChild(coinLabel)
         cam.addChild(stageLabel)

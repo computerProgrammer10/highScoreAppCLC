@@ -33,6 +33,15 @@ class Obstacle{
             newChild = (newChild.copy() as! SKSpriteNode)
             newChild.removeFromParent()
             
+            newChild.zPosition = 0
+            
+            if newChild.name == "ground" {
+                newChild.texture = SKTexture(image: UIImage(named: "platform")!)
+            } else if newChild.name == "dash-ground" {
+                newChild.texture = SKTexture(image: UIImage(named: "dash-platform")!)
+                
+            }
+            
             nodeToSpawn.addChild(newChild)
         }
         

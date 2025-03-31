@@ -495,7 +495,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         curObstacles.removeAll()
         
         viewController.pauseButton.isHidden = false
-        player.position = CGPoint(x: 0.0, y: 0.0)
+        player.position = CGPoint(x: 337.5, y: -37.5)
         cam.position = CGPoint(x: 0.0, y: 0.0)
         player.physicsBody?.velocity = CGVector(dx: 500, dy: 0)
         player.physicsBody!.friction = 0

@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		238BBF282D6E062100CA4D61 /* foreverGameCLCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foreverGameCLCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		238BBF412D6E062300CA4D61 /* foreverGameCLCAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foreverGameCLCAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		238BBF4B2D6E062300CA4D61 /* foreverGameCLCAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foreverGameCLCAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		238BBF282D6E062100CA4D61 /* DashPanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DashPanic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		238BBF412D6E062300CA4D61 /* DashPanicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DashPanicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		238BBF4B2D6E062300CA4D61 /* DashPanicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DashPanicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -85,9 +85,9 @@
 		238BBF292D6E062100CA4D61 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				238BBF282D6E062100CA4D61 /* foreverGameCLCApp.app */,
-				238BBF412D6E062300CA4D61 /* foreverGameCLCAppTests.xctest */,
-				238BBF4B2D6E062300CA4D61 /* foreverGameCLCAppUITests.xctest */,
+				238BBF282D6E062100CA4D61 /* DashPanic.app */,
+				238BBF412D6E062300CA4D61 /* DashPanicTests.xctest */,
+				238BBF4B2D6E062300CA4D61 /* DashPanicUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		238BBF272D6E062100CA4D61 /* foreverGameCLCApp */ = {
+		238BBF272D6E062100CA4D61 /* DashPanic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 238BBF552D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCApp" */;
+			buildConfigurationList = 238BBF552D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "DashPanic" */;
 			buildPhases = (
 				238BBF242D6E062100CA4D61 /* Sources */,
 				238BBF252D6E062100CA4D61 /* Frameworks */,
@@ -110,16 +110,16 @@
 			fileSystemSynchronizedGroups = (
 				238BBF2A2D6E062100CA4D61 /* foreverGameCLCApp */,
 			);
-			name = foreverGameCLCApp;
+			name = DashPanic;
 			packageProductDependencies = (
 			);
 			productName = foreverGameCLCApp;
-			productReference = 238BBF282D6E062100CA4D61 /* foreverGameCLCApp.app */;
+			productReference = 238BBF282D6E062100CA4D61 /* DashPanic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		238BBF402D6E062300CA4D61 /* foreverGameCLCAppTests */ = {
+		238BBF402D6E062300CA4D61 /* DashPanicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 238BBF582D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppTests" */;
+			buildConfigurationList = 238BBF582D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "DashPanicTests" */;
 			buildPhases = (
 				238BBF3D2D6E062300CA4D61 /* Sources */,
 				238BBF3E2D6E062300CA4D61 /* Frameworks */,
@@ -133,16 +133,16 @@
 			fileSystemSynchronizedGroups = (
 				238BBF442D6E062300CA4D61 /* foreverGameCLCAppTests */,
 			);
-			name = foreverGameCLCAppTests;
+			name = DashPanicTests;
 			packageProductDependencies = (
 			);
 			productName = foreverGameCLCAppTests;
-			productReference = 238BBF412D6E062300CA4D61 /* foreverGameCLCAppTests.xctest */;
+			productReference = 238BBF412D6E062300CA4D61 /* DashPanicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		238BBF4A2D6E062300CA4D61 /* foreverGameCLCAppUITests */ = {
+		238BBF4A2D6E062300CA4D61 /* DashPanicUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 238BBF5B2D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppUITests" */;
+			buildConfigurationList = 238BBF5B2D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "DashPanicUITests" */;
 			buildPhases = (
 				238BBF472D6E062300CA4D61 /* Sources */,
 				238BBF482D6E062300CA4D61 /* Frameworks */,
@@ -156,11 +156,11 @@
 			fileSystemSynchronizedGroups = (
 				238BBF4E2D6E062300CA4D61 /* foreverGameCLCAppUITests */,
 			);
-			name = foreverGameCLCAppUITests;
+			name = DashPanicUITests;
 			packageProductDependencies = (
 			);
 			productName = foreverGameCLCAppUITests;
-			productReference = 238BBF4B2D6E062300CA4D61 /* foreverGameCLCAppUITests.xctest */;
+			productReference = 238BBF4B2D6E062300CA4D61 /* DashPanicUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "foreverGameCLCApp" */;
+			buildConfigurationList = 238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "DashPanic" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				238BBF272D6E062100CA4D61 /* foreverGameCLCApp */,
-				238BBF402D6E062300CA4D61 /* foreverGameCLCAppTests */,
-				238BBF4A2D6E062300CA4D61 /* foreverGameCLCAppUITests */,
+				238BBF272D6E062100CA4D61 /* DashPanic */,
+				238BBF402D6E062300CA4D61 /* DashPanicTests */,
+				238BBF4A2D6E062300CA4D61 /* DashPanicUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		238BBF432D6E062300CA4D61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 238BBF272D6E062100CA4D61 /* foreverGameCLCApp */;
+			target = 238BBF272D6E062100CA4D61 /* DashPanic */;
 			targetProxy = 238BBF422D6E062300CA4D61 /* PBXContainerItemProxy */;
 		};
 		238BBF4D2D6E062300CA4D61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 238BBF272D6E062100CA4D61 /* foreverGameCLCApp */;
+			target = 238BBF272D6E062100CA4D61 /* DashPanic */;
 			targetProxy = 238BBF4C2D6E062300CA4D61 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -463,7 +463,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/foreverGameCLCApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/foreverGameCLCApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DashPanic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DashPanic";
 			};
 			name = Debug;
 		};
@@ -482,7 +482,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/foreverGameCLCApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/foreverGameCLCApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DashPanic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DashPanic";
 			};
 			name = Release;
 		};
@@ -523,7 +523,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "foreverGameCLCApp" */ = {
+		238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "DashPanic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				238BBF532D6E062300CA4D61 /* Debug */,
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		238BBF552D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCApp" */ = {
+		238BBF552D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "DashPanic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				238BBF562D6E062300CA4D61 /* Debug */,
@@ -541,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		238BBF582D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppTests" */ = {
+		238BBF582D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "DashPanicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				238BBF592D6E062300CA4D61 /* Debug */,
@@ -550,7 +550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		238BBF5B2D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "foreverGameCLCAppUITests" */ = {
+		238BBF5B2D6E062300CA4D61 /* Build configuration list for PBXNativeTarget "DashPanicUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				238BBF5C2D6E062300CA4D61 /* Debug */,

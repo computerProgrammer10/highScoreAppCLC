@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "DashPanic" */;
+			buildConfigurationList = 238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "KittyCatRun" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -397,7 +397,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LKW7UKGZ29;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Dash Panic!";
+				INFOPLIST_KEY_CFBundleDisplayName = "Kitty Cat Run!";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -410,7 +410,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = clc.DashPanic;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.KittyCatRun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -427,7 +427,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LKW7UKGZ29;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Dash Panic!";
+				INFOPLIST_KEY_CFBundleDisplayName = "Kitty Cat Run!";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -440,7 +440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = clc.foreverGameCLCApp3;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.KittyCatRun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -523,7 +523,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "DashPanic" */ = {
+		238BBF232D6E062100CA4D61 /* Build configuration list for PBXProject "KittyCatRun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				238BBF532D6E062300CA4D61 /* Debug */,

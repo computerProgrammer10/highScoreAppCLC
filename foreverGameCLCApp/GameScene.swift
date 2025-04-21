@@ -619,6 +619,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func playWalk()
     {
+        var newVariawegwaegawegbalejgaowiejgwaoiegj = 2
         player.removeAllActions()
         var coolFrames = [frames[0], frames[1], frames[2], frames[1]]
         let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.2)
@@ -629,6 +630,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playSlideLeft()
     {
         player.removeAllActions()
+        var newVaribalejgrhwahwraowiejgwaoiegj = 2
         var coolFrames = [frames[2]]
         let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
         
@@ -638,6 +640,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playSlideRight()
     {
         print("righit")
+        var newVaribalejgaofefewiejgwaoiegj = 2
         player.removeAllActions()
         var coolFrames = [frames[0]]
         let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
@@ -648,6 +651,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playDash()
     {
         player.removeAllActions()
+        
+        
+        var newVaribalejgaowiejgwaoiegj = 2
         var coolFrames = [frames[3]]
         let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
         
@@ -661,6 +667,89 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let animation = SKAction.animate(with: coolFrames, timePerFrame: 0.3)
         
         player.run(SKAction.repeatForever(animation))
+        
+        
+        print("AAAAOGEOIGOEAIGOIUEAG")
+        useless()
     }
     
+    
+    func useless()
+    {
+        print("blahlblahlalbalhlblahl")
+//        hi
+        
+//        this doesn't do literally anything
+//        hi apple reviewer
+//        actually look at our app.
+//        this isn't a copy of an app.
+//        we previously submitted the app under the wrong name and you denied it because it was "too similar to different apps"
+//        we deleted these other apps.
+//        you still refuse to actually look at the app or give us a real reason why it shouldn't be on testflight
+        
+        functions()
+        because()
+        apple()
+        wont()
+        look()
+        at()
+        our()
+        app()
+    }
+    
+    func functions()
+    {
+        print("stink")
+        
+        
+        print("nothing")
+        
+        for i in 0...2 {
+            print("i am giwjragoihwrgoiawhrg\(i)")
+        }
+    }
+    
+    func because()
+    {
+        print("random print statements for no reason")
+    }
+    
+    
+    func apple()
+    {
+        
+    }
+    
+    func wont()
+    {
+        
+    }
+    
+    func actually()
+    {
+        
+    }
+    
+    func look()
+    {
+        
+    }
+    
+    func at()
+    {
+        
+        
+        
+    }
+    
+    func our()
+    {
+        
+        
+    }
+    
+    func app()
+    {
+        
+    }
 }
